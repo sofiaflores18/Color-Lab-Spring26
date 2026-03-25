@@ -1,0 +1,25 @@
+@startuml activity
+
+start
+
+:User enters username and password;
+:Click "Do It" button;
+:POST to Login.php with login and password;
+:Validate credentials against Users table;
+
+if (Connection error?) then (yes)
+  :Return error message;
+  stop
+endif
+
+if (User record found?) then (yes)
+  :Return id, firstName, lastName;
+  :Save cookie (firstName, lastName, userId)\nExpires in 20 minutes;
+  :Redirect to color.html;
+  stop
+else (no)
+  :Display "User/Password combination incorrect";
+  stop
+endif
+
+@enduml

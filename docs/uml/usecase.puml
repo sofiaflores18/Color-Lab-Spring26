@@ -1,0 +1,32 @@
+@startuml
+left to right direction
+
+actor User
+
+rectangle "Colors Web Application" {
+    usecase "Log In" as UC1
+    usecase "Log Out" as UC2
+    usecase "Add Color" as UC3
+    usecase "Search Colors" as UC4
+}
+
+User --> UC1
+User --> UC2
+User --> UC3
+User --> UC4
+
+note right of UC1
+  Requires valid username
+  and password (Users table)
+end note
+
+note right of UC3
+  Requires active session
+  (userId from cookie)
+end note
+
+note right of UC4
+  Searches Colors by name
+  filtered by userId
+end note
+@enduml
